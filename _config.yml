@@ -2,11 +2,48 @@ title: Aplicaciones Web Interactivas con Shiny
 author:
   name: Florencia D'Andrea
 description: > # this means to ignore newlines until "show_excerpts:"
-  Material del Taller de Shiny de LatinR 2020 y otras cosas más
+  Material del paquete Shiny generado para el Taller de LatinR 2020
 show_excerpts: false # set to true to show excerpts on the homepage
 
 theme: minima
 
-layout: page
-title: "PAGE TITLE"
-permalink: /URL-PATH/
+ # generate social links in footer
+  social_links:
+    twitter: LatinR_Conf
+    # github:  jekyll
+    # devto: jekyll
+    # dribbble: jekyll
+    # facebook: jekyll
+    # flickr:   jekyll
+    # instagram: jekyll
+    # linkedin: jekyll
+    # pinterest: jekyll
+    # youtube: jekyll
+     youtube_channel: UCt950nC6jlh2ELDRPigWOkg
+    # youtube_channel_name: CloudCannon
+    # telegram: jekyll
+    # googleplus: +jekyll
+    # microdotblog: jekyll
+    # keybase: jekyll
+
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
+
+    # GitLab instances
+    # gitlab:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+ - material.md
+ - docentes.md
+
+
