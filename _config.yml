@@ -3,7 +3,7 @@ author:
   name: GitHub User
   #email: your-email@domain.com
 description: > # this means to ignore newlines until "show_excerpts:"
-Material del paquete Shiny generado para el Taller de LatinR 2020
+  Material del paquete Shiny generado para el Taller de LatinR 2020
 show_excerpts: false # set to true to show excerpts on the homepage
 
 # Minima date format
