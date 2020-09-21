@@ -1,1 +1,8 @@
+title: Aplicaciones Web Interactivas con Shiny
+author:
+  name: flor14
+description: > # this means to ignore newlines until "show_excerpts:"
+  Material del Taller de Shiny de LatinR 2020 y otras cosas más
+show_excerpts: false # set to true to show excerpts on the homepage
+
 theme: minima
