@@ -1,16 +1,20 @@
 title: Aplicaciones Web Interactivas con Shiny
 author:
-  name: Florencia D'Andrea
+  name: GitHub User
+#email: your-email@domain.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  Material del paquete Shiny generado para el Taller de LatinR 2020
+    Material del paquete Shiny generado para el Taller de LatinR 2020
 show_excerpts: false # set to true to show excerpts on the homepage
 
-theme: minima
+# Minima date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  date_format: "%b %-d, %Y"
 
- # generate social links in footer
-social_links:
-  twitter: LatinR_Conf
-    # github:  jekyll
+  # generate social links in footer
+  social_links:
+    twitter: LatinR_Conf
+    #github:  jekyll
     # devto: jekyll
     # dribbble: jekyll
     # facebook: jekyll
@@ -19,7 +23,7 @@ social_links:
     # linkedin: jekyll
     # pinterest: jekyll
     # youtube: jekyll
-  youtube_channel: UCt950nC6jlh2ELDRPigWOkg
+    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
     # youtube_channel_name: CloudCannon
     # telegram: jekyll
     # googleplus: +jekyll
@@ -45,5 +49,10 @@ social_links:
 #header_pages:
  - material.md
  - docentes.md
+
+# Build settings
+theme: minima
+
+ 
 
 
