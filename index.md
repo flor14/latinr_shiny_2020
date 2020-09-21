@@ -1,4 +1,4 @@
-### Aplicaciones web con Shiny
+### Taller
 
 ![](latinr-shiny.png)
 
