@@ -8,8 +8,8 @@ show_excerpts: false # set to true to show excerpts on the homepage
 theme: minima
 
  # generate social links in footer
-  social_links:
-    twitter: LatinR_Conf
+social_links:
+  twitter: LatinR_Conf
     # github:  jekyll
     # devto: jekyll
     # dribbble: jekyll
@@ -19,7 +19,7 @@ theme: minima
     # linkedin: jekyll
     # pinterest: jekyll
     # youtube: jekyll
-     youtube_channel: UCt950nC6jlh2ELDRPigWOkg
+  youtube_channel: UCt950nC6jlh2ELDRPigWOkg
     # youtube_channel_name: CloudCannon
     # telegram: jekyll
     # googleplus: +jekyll
