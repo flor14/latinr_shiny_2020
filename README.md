@@ -10,7 +10,7 @@ Profes:
 
 ## Emoji Shiny app
 
-## Información para usuaries
+#### Información para usuaries
 
 Puedes bajarte la app a tu computadora usando el siguiente código
 
@@ -21,7 +21,7 @@ library(emoji_data_explorer)
 emoji_data_explorer::emoji_app()
 ```
 
-## Guías de contribución
+#### Lineamientos para contribuir con la app
 
 Reporte de errores:
 
