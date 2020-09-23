@@ -25,7 +25,7 @@ emoji_data_explorer::emoji_app()
 
 Reporte de errores:
 
-- Preguntas, comentarios, informes de errores: abra un `issue` en el repositorio de este proyecto [aquí] (https://github.com/flor14/shinyssd/issues).
+- Preguntas, comentarios, informes de errores: abra un `issue` en el repositorio de este proyecto [aquí](https://github.com/flor14/latinr_shiny_2020/issues).
 
 Contribuye a nuestro software:
 
