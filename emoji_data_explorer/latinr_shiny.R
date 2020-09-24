@@ -128,7 +128,7 @@ plot_barras_imgs <- function(data_conteos, emoji_img_map) {
 
 server <- function(input, output, session) {
   output$por_pais <- renderPlot({
-    filter(emo_datos, pais %in% input$selector_pais) %>%
+    filter(emo_datos, pais %in% req(input$selector_pais)) %>%
       select(-pais) %>%
       pivot_longer(cols = starts_with("top_")) %>%
       count(value, sort = TRUE) %>%
@@ -139,7 +139,7 @@ server <- function(input, output, session) {
   output$por_emoji <- renderPlot({
     filter(
       emo_datos,
-      top_1 %in% input$selector_emoji |
+      top_1 %in% req(input$selector_emoji) |
         top_2 %in% input$selector_emoji |
         top_3 %in% input$selector_emoji |
         top_4 %in% input$selector_emoji |
