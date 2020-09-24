@@ -5,6 +5,8 @@ library("forcats")
 library("ggplot2")
 library("shiny")
 library("tidyr")
+library("shinycssloaders")
+library("shinythemes")
 
 ########## Codigo temporal, para generar dataset de prueba.
 
@@ -71,10 +73,10 @@ emoji_img_map <- readr::read_rds("Datos/emoji_img_map.rds")
 
 ########## Interfaz de usuario.
 
-ui <- fluidPage(
+ui <- fluidPage(theme = shinytheme("cerulean"),
   title = "Emoji Data Explorer",       # Titulo para la barrita del explorador.
   titlePanel("Emoji Data Explorer"),   # Titulo el top de la pagina.
-  tabsetPanel(                         # Vamos a tener un panel de tabs (con dos tabs, por ahora..).
+  navbarPage(title = "Datos",          # Vamos a tener un panel de tabs (con dos tabs, por ahora..).
     tabPanel(                          # Un tab para analisis por pais.
       "Por pais",                      # Titulo del tab.
       selectInput(
@@ -83,7 +85,8 @@ ui <- fluidPage(
         choices = paises,              # Opciones posibles para seleccionar.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
-      plotOutput("por_pais")           # Plot para mostrar el grafico por pais.
+      shinycssloaders::withSpinner(
+      plotOutput("por_pais"))           # Plot para mostrar el grafico por pais.
     ),
     tabPanel( # Un tab para analisis por emoji.
       "Por emoji",                     # Titulo del tab.
@@ -93,7 +96,8 @@ ui <- fluidPage(
         choices = emo_opts,            # Opciones posibles para seleccionar.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
-      plotOutput("por_emoji")          # Plot para mostrar el grafico por emoji.
+      shinycssloaders::withSpinner(
+      plotOutput("por_emoji"))          # Plot para mostrar el grafico por emoji.
     )
   )
 )
