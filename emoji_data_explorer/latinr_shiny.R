@@ -7,6 +7,7 @@ library("shiny")
 library("tidyr")
 library("shinycssloaders")
 library("shinythemes")
+library("colourpicker")
 
 ########## Codigo temporal, para generar dataset de prueba.
 
@@ -85,6 +86,9 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
         choices = paises,              # Opciones posibles para seleccionar.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
+      colourInput(inputId = "Color", label = "Seleccione su color:",
+                  value = "lightblue"),
+      textInput(inputId = "tamanio", label = "Tamano del texto del eje Y"),
       shinycssloaders::withSpinner(
       plotOutput("por_pais"))           # Plot para mostrar el grafico por pais.
     ),
@@ -96,6 +100,10 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
         choices = emo_opts,            # Opciones posibles para seleccionar.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
+      colourInput(inputId = "Color2", label = "Seleccione su color:",
+                  value = "purple"),
+      sliderInput(inputId = "tamanio2", label = "Tamano del texto del eje Y",
+                  min = 1, max = 30, value = 12),
       shinycssloaders::withSpinner(
       plotOutput("por_emoji"))          # Plot para mostrar el grafico por emoji.
     )
@@ -134,7 +142,8 @@ server <- function(input, output, session) {
       count(value, sort = TRUE) %>%
       mutate(x = value) %>%
       # plot_barras()
-      plot_barras_imgs(emoji_img_map)
+      plot_barras_imgs(emoji_img_map) +
+      theme(axis.text.y = element_text(colour=input$Color, size = as.numeric(input$tamanio)))
   })
   output$por_emoji <- renderPlot({
     filter(
@@ -149,7 +158,9 @@ server <- function(input, output, session) {
       count(pais, sort = TRUE) %>%
       mutate(x = pais) %>%
       # plot_barras()
-      plot_barras_imgs(emoji_img_map)
+      plot_barras_imgs(emoji_img_map) +
+      theme(axis.text.y = element_text(colour=input$Color2,
+                                       size = input$tamanio2))
   })
 }
 
