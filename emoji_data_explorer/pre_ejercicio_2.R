@@ -1,11 +1,12 @@
 ########## Carga de librerias necesarias.
 
-library("dplyr")   # Para transformar la data, y piping `%>%`
-library("forcats") # Para reordenar las barras del plot.
-library("ggplot2") # Para generar los plots.
-library("readr")   # Para cargar el dataset.
+library("dplyr")       # Para transformar la data, y piping `%>%`
+library("forcats")     # Para reordenar las barras del plot.
+library("ggplot2")     # Para generar los plots.
+library("readr")       # Para cargar el dataset.
 library("shiny")
-library("tidyr")   # Para pivotear la tabla.
+library("shinythemes") # Para cambiarle el tema de colores.
+library("tidyr")       # Para pivotear la tabla.
 
 # Cargo el dataset.
 emo_datos <- read_rds("Datos/emo_datos.rds")
@@ -14,6 +15,7 @@ emo_datos <- read_rds("Datos/emo_datos.rds")
 
 ui <- fluidPage(
   title = "Emoji Data Explorer",       # Titulo para la barrita del navegador web.
+  theme = shinytheme("cerulean"),      # Le ponemos un lindo tema de colores!
   titlePanel("Emoji Data Explorer"),   # Titulo del top de la pagina.
   navbarPage(                          # Vamos a tener un panel de tabs.
     title = "Filtrando",               # Titulo de la tabla de tabs.

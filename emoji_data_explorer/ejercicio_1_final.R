@@ -1,11 +1,13 @@
 ########## Carga de librerias necesarias.
 
 library("shiny")
+library("shinythemes") # Para cambiarle el tema de colores.
 
 ########## Interfaz de usuarie.
 
 ui <- fluidPage(
   title = "Emoji Data Explorer",       # Titulo para la barrita del navegador web.
+  theme = shinytheme("cerulean"),      # Le ponemos un lindo tema de colores!
   titlePanel("Emoji Data Explorer"),   # Titulo del top de la pagina.
   navbarPage(                          # Vamos a tener un panel de tabs.
     title = "Filtrando",               # Titulo de la tabla de tabs.
