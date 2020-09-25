@@ -4,8 +4,8 @@ library("ggplot2") # Para generar los plots.
 library("readr")   # Para cargar el dataset.
 library("tidyr")   # Para pivotear la tabla.
 
+# Cargo el dataset.
 emo_datos <- read_rds("Datos/emo_datos.rds")
-emoji_img_map <- read_rds("Datos/emoji_img_map.rds")
 
 ## Veamos un grafico de baras con la cantidad de veces que se eligio cada emoji.
 # Transformamos los datos para el plot.
@@ -41,6 +41,7 @@ plot_barras(datos_plot)
 # Funcion para generar el plot con imagenes.
 # `data_conteos` debe ser un data.frame con columnas `x` y `n`.
 # `emoji_img_map` debe ser un data.frame con columnas `emoji` y `label`.
+emoji_img_map <- read_rds("Datos/emoji_img_map.rds")
 plot_barras <- function(data_conteos) {
   library("ggtext")
   # Reordenamos de mayor a menor los datos del eje x.
