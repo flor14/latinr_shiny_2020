@@ -36,3 +36,19 @@ plot_barras <- function(data_conteos) {
 }
 
 plot_barras(datos_plot)
+
+
+# Funcion para generar el plot con imagenes.
+# `data_conteos` debe ser un data.frame con columnas `x` y `n`.
+# `emoji_img_map` debe ser un data.frame con columnas `emoji` y `label`.
+plot_barras <- function(data_conteos) {
+  library("ggtext")
+  # Reordenamos de mayor a menor los datos del eje x.
+  merge(data_conteos, emoji_img_map, by.x = "x", by.y = "emoji") %>%
+    ggplot(aes(x = fct_reorder(label, n, .desc = TRUE), y = n)) +
+    geom_col() +                              # Grafico de barras.
+    theme(axis.text.x = element_markdown()) + # Para poner la imagen del emoji en vez del emoji.
+    labs(x = NULL)                            # Borramos el label del eje x.
+}
+
+plot_barras(datos_plot)
