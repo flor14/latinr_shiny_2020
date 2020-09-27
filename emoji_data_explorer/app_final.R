@@ -42,7 +42,7 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
       )
     )
   )
-)
+
 
 ########## Codigo de servidor.
 
