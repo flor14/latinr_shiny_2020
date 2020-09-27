@@ -38,7 +38,10 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
       withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
-        plotOutput("por_pais")         # Lugar donde ira el plot para mostrar el grafico por paises.
+        plotOutput("por_pais"),        # Lugar donde ira el plot para mostrar el grafico por paises.
+        type = 8,                      # Otro tipo de spinner.
+        color = "#4d45e7",             # Color del spinner.
+        size = 2                       # Tamanio del spinner
       )
     )
   )
