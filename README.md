@@ -5,7 +5,7 @@
 
 ## Profes
 
-* [Florencia D'Andrea]()
+* [Florencia D'Andrea](https://florencia.netlify.app/es-es/)
 * [Juan Cruz Rodríguez](https://jcrodriguez.rbind.io/)
 * [Vilma Romero]()
 
@@ -17,10 +17,10 @@
 Puedes bajarte la app a tu computadora usando el siguiente código
 
 ``` 
-library(devtools)
-devtools::install_github("flor14/latinr_shiny_2020", subdir = "emoji_data_explorer")
-library(emoji_data_explorer)
-emoji_data_explorer::emoji_app()
+library(remotes)
+remotes::install_github("flor14/latinr_shiny_2020", subdir = "emojidataexplorer")
+library(emojidataexplorer)
+emojidataexplorer::emojiapp_run()
 ```
 
 ## Links de interés
