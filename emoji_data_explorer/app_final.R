@@ -32,7 +32,7 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
     hr(),                              # Separador de contenido
     h4("Personaliza el grafico"),      # Encabezado de cuarto nivel
     colourInput(inputId = "colorBarra", label = "Color de las barras",
-                value = "#562457"),    # Selector de color para las barras
+                value = "#595959"),    # Selector de color para las barras
     colourInput(inputId = "bordeBarra", label = "Color del borde de las barras",
                 value = "black")       # Selector de color para los bordes de las barras
     ),
