@@ -13,15 +13,19 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
       label = "Emoji",               # Label del selector.
       choices = c("A", "B", "C"),    # Opciones posibles para seleccionar.
       multiple = TRUE                # Permite seleccionar mas de uno.
-    )),
-    tabPanel(                          # Un tab para analisis por paises.
-      "Por pais",                      # Titulo del tab.
-      checkboxGroupInput(                     # Input de selector de opciones.
-        "selector_pais",               # ID del selector de paises.
-        label = "Paises",              # Label del selector.
-        choices = c("A", "B", "C")    # Opciones posibles para seleccionar.
-
-      )))
+    ),
+    # plotOutput("por_emoji")         # Aquí irá el gráfico  
+  ),
+  tabPanel(                          # Un tab para analisis por paises.
+    "Por pais",                      # Titulo del tab.
+    checkboxGroupInput(                     # Input de selector de opciones.
+      "selector_pais",               # ID del selector de paises.
+      label = "Paises",              # Label del selector.
+      choices = c("A", "B", "C")    # Opciones posibles para seleccionar.
+    ),
+    # plotOutput("por_emoji")        # Aqupi irá el gráfico
+  )
+)
 
 ########## Codigo de servidor.
 
