@@ -8,7 +8,7 @@ library("shiny")
 library("shinycssloaders") # Para agregar waiters.
 library("shinythemes")     # Para cambiarle el tema de colores.
 library("tidyr")           # Para pivotear la tabla.
-library("colourpicker")
+library("colourpicker")    # Para el selector de colores.
 
 # Cargo el dataset.
 emo_datos <- read_rds("Datos/emo_datos.rds")
