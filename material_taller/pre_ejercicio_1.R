@@ -3,7 +3,7 @@ library("shinythemes") # Para cambiarle el tema de colores.
 
 ########## Interfaz de usuarie.
 
-ui <- navbarPage(                      # Vamos a tener un panel de tabs.
+ui <- navbarPage(                    # Vamos a tener un panel de tabs.
   title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
   theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
   tabPanel(                          # Un tab para analisis por emoji.
