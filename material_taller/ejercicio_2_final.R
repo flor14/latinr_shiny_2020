@@ -35,9 +35,9 @@ ui <- navbarPage(                    # Vamos a tener un panel de tabs.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
       plotOutput("por_pais")           # Lugar donde ira el plot para mostrar el grafico por paises.
-    )
-  )
-)
+   )
+ )
+
 
 ########## Codigo de servidor.
 
