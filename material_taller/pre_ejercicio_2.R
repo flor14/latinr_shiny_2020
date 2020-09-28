@@ -13,17 +13,14 @@ emo_datos <- read_rds("Datos/emo_datos.rds")
 
 ########## Interfaz de usuarie.
 
-ui <- fluidPage(
-  title = "Emoji Data Explorer",       # Titulo para la barrita del navegador web.
-  theme = shinytheme("cerulean"),      # Le ponemos un lindo tema de colores!
-  titlePanel("Emoji Data Explorer"),   # Titulo del top de la pagina.
-  navbarPage(                          # Vamos a tener un panel de tabs.
-    title = "Filtrando",               # Titulo de la tabla de tabs.
-    tabPanel(                          # Un tab para analisis por emoji.
-      "Por emoji",                     # Titulo del tab.
-      selectInput(                     # Input de selector de opciones.
-        "selector_emoji",              # ID del selector de emojis.
-        label = "Emoji",               # Label del selector.
+ui <- navbarPage(                    # Vamos a tener un panel de tabs.
+  title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
+  theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
+  tabPanel(                          # Un tab para analisis por emoji.
+    "Por emoji",                     # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_emoji",              # ID del selector de emojis.
+      label = "Emoji",               # Label del selector.
         choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
@@ -38,7 +35,34 @@ ui <- fluidPage(
         multiple = TRUE                # Permite seleccionar mas de uno.
       ),
       plotOutput("por_pais")           # Lugar donde ira el plot para mostrar el grafico por paises.
-    )
+   )
+ )
+
+
+########## Interfaz de usuarie.
+
+ui <- navbarPage(                      # Vamos a tener un panel de tabs.
+  title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
+  theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
+  tabPanel(                          # Un tab para analisis por emoji.
+    "Por emoji",                     # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_emoji",              # ID del selector de emojis.
+      label = "Emoji",               # Label del selector.
+      choices = c("A", "B", "C"),    # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
+    ),
+    # plotOutput("por_emoji")        # Aquí irá el gráfico
+  ),
+  tabPanel(                          # Un tab para analisis por paises.
+    "Por pais",                      # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_pais",               # ID del selector de paises.
+      label = "Paises",              # Label del selector.
+      choices = c("A", "B", "C"),    # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
+    ),
+    # plotOutput("por_pais")        # Aquí irá el gráfico
   )
 )
 
