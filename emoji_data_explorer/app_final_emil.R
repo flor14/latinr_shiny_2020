@@ -60,8 +60,6 @@ plot_barras <- function(data_conteos) {
     labs(x = NULL)                            # Borramos el label del eje x.
 }
 
-plot_barras(datos_plot)
-
 server <- function(input, output, session) {
   output$por_emoji <- renderPlot({
     # Uso la funcion `req` para que este codigo se ejecute solo si el `input` utilizado tiene algun
