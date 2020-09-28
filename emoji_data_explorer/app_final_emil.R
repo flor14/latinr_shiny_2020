@@ -46,12 +46,6 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
 
 ########## Codigo de servidor.
 
-
-names <- tibble::enframe(emo::ji_name) %>% 
-  str_replace(emo_datos, )
-emo::ji_replace_all()
-
-
 # Funcion para generar el plot con imagenes.
 # `data_conteos` debe ser un data.frame con columnas `x` y `n`.
 # `emoji_img_map` debe ser un data.frame con columnas `emoji` y `label`.
