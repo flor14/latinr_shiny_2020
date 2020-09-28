@@ -27,7 +27,13 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
     ),
     withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
       plotOutput("por_emoji")        # Lugar donde ira el plot para mostrar el grafico por emoji.
-    )
+    ),
+    hr(),                              # Separador de contenido
+    h4("Personaliza el grafico"),      # Encabezado de cuarto nivel
+    colourInput(inputId = "colorBarra", label = "Color de las barras",
+                value = "#595959"),    # Selector de color para las barras
+    colourInput(inputId = "bordeBarra", label = "Color del borde de las barras",
+                value = "black")       # Selector de color para los bordes de las barras
   ),
   tabPanel(                          # Un tab para analisis por paises.
     "Por pais",                      # Titulo del tab.
