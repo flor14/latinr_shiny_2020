@@ -7,7 +7,7 @@
 
 * [Florencia D'Andrea](https://florencia.netlify.app/es-es/)
 * [Juan Cruz Rodríguez](https://jcrodriguez.rbind.io/)
-* [Vilma Romero]()
+* [Vilma Romero](https://vilmaromero.github.io/)
 
 
 ## Emoji Shiny app
