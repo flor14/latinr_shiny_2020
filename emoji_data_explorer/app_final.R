@@ -8,6 +8,7 @@ library("shiny")
 library("shinycssloaders") # Para agregar waiters.
 library("shinythemes")     # Para cambiarle el tema de colores.
 library("tidyr")           # Para pivotear la tabla.
+library("colourpicker")
 
 # Cargo el dataset.
 emo_datos <- read_rds("Datos/emo_datos.rds")
@@ -27,7 +28,13 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
       ),
       withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
         plotOutput("por_emoji")        # Lugar donde ira el plot para mostrar el grafico por emoji.
-      )
+      ),
+    hr(),                              # Separador de contenido
+    h4("Personaliza el grafico"),      # Encabezado de cuarto nivel
+    colourInput(inputId = "colorBarra", label = "Color de las barras",
+                value = "#562457"),    # Selector de color para las barras
+    colourInput(inputId = "bordeBarra", label = "Color del borde de las barras",
+                value = "black")       # Selector de color para los bordes de las barras
     ),
     tabPanel(                          # Un tab para analisis por paises.
       "Por pais",                      # Titulo del tab.
@@ -51,10 +58,10 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
 
 # Funcion para generar el plot.
 # `data_conteos` debe ser un data.frame con columnas `x` y `n`.
-plot_barras <- function(data_conteos) {
+plot_barras <- function(data_conteos, colorBarra, bordeBarra) {
   # Reordenamos de mayor a menor los datos del eje x.
   ggplot(data_conteos, aes(x = fct_reorder(x, n, .desc = TRUE), y = n)) +
-    geom_col() +                       # Grafico de barras.
+    geom_col(fill = colorBarra, color = bordeBarra) +                       # Grafico de barras.
     labs(x = NULL)                     # Borramos el label del eje x.
 }
 
@@ -74,7 +81,7 @@ server <- function(input, output, session) {
       select(pais) %>%              # Seleccionamos solo la columna de pais.
       count(pais, sort = TRUE) %>%  # Contamos cuantas veces se repite cada bandera.
       mutate(x = pais) %>%          # Renombramos la variable `pais` como `x`.
-      plot_barras()                 # Graficamos!
+      plot_barras(input$colorBarra, input$bordeBarra)                 # Graficamos!
   })
   output$por_pais <- renderPlot({
     # Uso la funcion `req` para que este codigo se ejecute solo si el `input` utilizado tiene algun
@@ -85,7 +92,7 @@ server <- function(input, output, session) {
       pivot_longer(cols = starts_with("top_")) %>% # No tenemos en cuenta el orden de eleccion.
       count(value, sort = TRUE) %>% # Contamos cuantas veces se repite cada emoji.
       mutate(x = value) %>% # Renombramos la variable `value` como `x` (va a ser nuestro eje x del plot).
-      plot_barras()
+      plot_barras(input$colorBarra, input$bordeBarra)
   })
 }
 
