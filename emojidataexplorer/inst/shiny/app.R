@@ -59,12 +59,12 @@ ui <- navbarPage(                      # Vamos a tener un panel de tabs.
 # `data_conteos` debe ser un data.frame con columnas `x` y `n`.
 # `emoji_img_map` debe ser un data.frame con columnas `emoji` y `label`.
 emoji_img_map <- read_rds("Datos/emoji_img_map.rds")
-plot_barras <- function(data_conteos) {
+plot_barras <- function(data_conteos, colorBarra, bordeBarra) {
   library("ggtext")
   # Reordenamos de mayor a menor los datos del eje x.
   merge(data_conteos, emoji_img_map, by.x = "x", by.y = "emoji") %>%
     ggplot(aes(x = fct_reorder(label, n, .desc = TRUE), y = n)) +
-    geom_col() +                              # Grafico de barras.
+    geom_col(fill = colorBarra, color = bordeBarra) +                              # Grafico de barras.
     theme(axis.text.x = element_markdown()) + # Para poner la imagen del emoji en vez del emoji.
     labs(x = NULL)                            # Borramos el label del eje x.
 }
@@ -86,7 +86,7 @@ server <- function(input, output, session) {
       select(pais) %>%              # Seleccionamos solo la columna de pais.
       count(pais, sort = TRUE) %>%  # Contamos cuantas veces se repite cada bandera.
       mutate(x = pais) %>%          # Renombramos la variable `pais` como `x`.
-      plot_barras()                 # Graficamos!
+      plot_barras(input$colorBarra, input$bordeBarra)                 # Graficamos!
   })
   output$por_pais <- renderPlot({
     # Uso la funcion `req` para que este codigo se ejecute solo si el `input` utilizado tiene algun
@@ -97,7 +97,7 @@ server <- function(input, output, session) {
       pivot_longer(cols = starts_with("top_")) %>% # No tenemos en cuenta el orden de eleccion.
       count(value, sort = TRUE) %>% # Contamos cuantas veces se repite cada emoji.
       mutate(x = value) %>% # Renombramos la variable `value` como `x` (va a ser nuestro eje x del plot).
-      plot_barras()
+      plot_barras(input$colorBarra, input$bordeBarra)
   })
 }
 
