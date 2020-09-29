@@ -7,4 +7,5 @@
 * Archivo ejercicio_1_final.R (Flor)
 * Archivo pre_ejercicio_2.R (Juan)
 * Archivo ejercicio_2_final.R (Juan)
+* Archivo app_terminada_taller.R (Vilma)
 
