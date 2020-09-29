@@ -43,6 +43,9 @@ emojidataexplorer::emojiapp_run()
 
 * [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/) [inglés]: Libro que te enseña buenas prácticas para generar una Shiny app modularizable y escalable, lista para tener en producción.
 
+* [How to build a Shiny app from scratch](https://bookdown.org/hadrien/how_to_build_a_shiny_app_from_scratch/) [inglés]: Libro básico con algunas aclaraciones sobre funcionamiento de la UI interesantes
+
+
 ## Lineamientos para contribuir con la app
 
 Reporte de errores:
