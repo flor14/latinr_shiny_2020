@@ -8,7 +8,6 @@ library("shiny")
 library("shinycssloaders") # Para agregar waiters.
 library("shinythemes")     # Para cambiarle el tema de colores.
 library("tidyr")           # Para pivotear la tabla.
-library("emo")
 library("colourpicker")    # Para el selector de colores.
 
 # Cargo el dataset.
