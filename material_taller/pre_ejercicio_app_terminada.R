@@ -11,7 +11,7 @@ library("tidyr")           # Para pivotear la tabla.
 library("colourpicker")    # Para el selector de colores.
 
 # Cargo el dataset.
-emo_datos <- read_rds("Datos/emo_datos.rds") %>% drop_na()
+emo_datos <- read_csv("Datos/emo_datos.csv")
 
 ########## Interfaz de usuarie.
 
