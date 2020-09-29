@@ -9,16 +9,15 @@ Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Imports:
+    colourpicker,
     dplyr,
+    forcats,
     ggplot2,
+    ggtext,
+    readr,
     shiny,
     shinycssloaders,
-    tidyr,
-    emo,
-    readr,
-    forcats,
     shinythemes,
-    ggtext,
-    stringr
+    tidyr
 RoxygenNote: 7.0.2
