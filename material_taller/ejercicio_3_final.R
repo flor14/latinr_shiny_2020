@@ -8,9 +8,9 @@ library("shiny")
 library("shinycssloaders") # Para agregar waiters.
 library("shinythemes")     # Para cambiarle el tema de colores.
 library("tidyr")           # Para pivotear la tabla.
-library("emo")
+
 # Cargo el dataset.
-emo_datos <- read_rds("Datos/emo_datos.rds") %>% drop_na()
+emo_datos <- read_csv("Datos/emo_datos.csv")
 
 ########## Interfaz de usuarie.
 
