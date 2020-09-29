@@ -24,11 +24,11 @@ emojidataexplorer::emojiapp_run()
 ```
  ## ¿Qué hay en el repositorio?
  
- * Carpeta `emojidataexplorer` tiene el código del paquete
+ * Carpeta `emojidataexplorer` tiene el código del paquete.
  
- * Carpeta `emoji_data_explorer` tiene las primeras versiones del código, incluye otras formas de incluir emojis en los ejes de l gráfico.
+ * Carpeta `emoji_data_explorer` tiene las primeras versiones del código, incluye otras formas de incluir emojis en los ejes del gráfico.
  
- * Carpeta `material_taller` tiene los archivos qe se van a usar el día del taller. Puedes acceder a los mismos de forma interactiva usando [Binder](https://mybinder.org/v2/gh/flor14/latinr_shiny_2020.git/binder?urlpath=rstudio/ ).
+ * Carpeta `material_taller` tiene los archivos qe se van a usar el día del taller. Puedes acceder a los mismos de forma interactiva usando [Binder](https://mybinder.org/v2/gh/flor14/latinr_shiny_2020.git/binder?urlpath=rstudio/).
  
 
 ## Links de interés
