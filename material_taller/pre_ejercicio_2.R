@@ -9,7 +9,7 @@ library("shinythemes") # Para cambiarle el tema de colores.
 library("tidyr")       # Para pivotear la tabla.
 
 # Cargo el dataset.
-emo_datos <- read_rds("Datos/emo_datos.rds")
+emo_datos <- read_csv("Datos/emo_datos.csv")
 
 ########## Interfaz de usuarie.
 
@@ -21,48 +21,20 @@ ui <- navbarPage(                    # Vamos a tener un panel de tabs.
     selectInput(                     # Input de selector de opciones.
       "selector_emoji",              # ID del selector de emojis.
       label = "Emoji",               # Label del selector.
-        choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      plotOutput("por_emoji")          # Lugar donde ira el plot para mostrar el grafico por emoji.
-    ),
-    tabPanel(                          # Un tab para analisis por paises.
-      "Por pais",                      # Titulo del tab.
-      selectInput(                     # Input de selector de opciones.
-        "selector_pais",               # ID del selector de paises.
-        label = "Paises",              # Label del selector.
-        choices = NULL,                # Opciones posibles para seleccionar (NULL por ahora).
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      plotOutput("por_pais")           # Lugar donde ira el plot para mostrar el grafico por paises.
-   )
- )
-
-
-########## Interfaz de usuarie.
-
-ui <- navbarPage(                      # Vamos a tener un panel de tabs.
-  title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
-  theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
-  tabPanel(                          # Un tab para analisis por emoji.
-    "Por emoji",                     # Titulo del tab.
-    selectInput(                     # Input de selector de opciones.
-      "selector_emoji",              # ID del selector de emojis.
-      label = "Emoji",               # Label del selector.
-      choices = c("A", "B", "C"),    # Opciones posibles para seleccionar.
+      choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
       multiple = TRUE                # Permite seleccionar mas de uno.
     ),
-    # plotOutput("por_emoji")        # Aquí irá el gráfico
+    plotOutput("por_emoji")          # Aquí irá el gráfico
   ),
   tabPanel(                          # Un tab para analisis por paises.
     "Por pais",                      # Titulo del tab.
     selectInput(                     # Input de selector de opciones.
       "selector_pais",               # ID del selector de paises.
       label = "Paises",              # Label del selector.
-      choices = c("A", "B", "C"),    # Opciones posibles para seleccionar.
+      choices = NULL,                # Opciones posibles para seleccionar (NULL por ahora).
       multiple = TRUE                # Permite seleccionar mas de uno.
     ),
-    # plotOutput("por_pais")        # Aquí irá el gráfico
+    plotOutput("por_pais")           # Aquí irá el gráfico
   )
 )
 

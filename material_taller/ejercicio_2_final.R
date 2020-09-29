@@ -9,7 +9,7 @@ library("shinythemes") # Para cambiarle el tema de colores.
 library("tidyr")       # Para pivotear la tabla.
 
 # Cargo el dataset.
-emo_datos <- read_rds("Datos/emo_datos.rds")
+emo_datos <- read_csv("Datos/emo_datos.csv")
 
 ########## Interfaz de usuarie.
 
@@ -21,23 +21,22 @@ ui <- navbarPage(                    # Vamos a tener un panel de tabs.
     selectInput(                     # Input de selector de opciones.
       "selector_emoji",              # ID del selector de emojis.
       label = "Emoji",               # Label del selector.
-        choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      plotOutput("por_emoji")          # Lugar donde ira el plot para mostrar el grafico por emoji.
+      choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
     ),
-    tabPanel(                          # Un tab para analisis por paises.
-      "Por pais",                      # Titulo del tab.
-      selectInput(                     # Input de selector de opciones.
-        "selector_pais",               # ID del selector de paises.
-        label = "Paises",              # Label del selector.
-        choices = unique(unlist(emo_datos$pais)), # Opciones posibles para seleccionar.
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      plotOutput("por_pais")           # Lugar donde ira el plot para mostrar el grafico por paises.
-   )
- )
-
+    plotOutput("por_emoji")          # Aquí irá el gráfico
+  ),
+  tabPanel(                          # Un tab para analisis por paises.
+    "Por pais",                      # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_pais",               # ID del selector de paises.
+      label = "Paises",              # Label del selector.
+      choices = unique(unlist(emo_datos$pais)), # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
+    ),
+    plotOutput("por_pais")           # Aquí irá el gráfico
+  )
+)
 
 ########## Codigo de servidor.
 
