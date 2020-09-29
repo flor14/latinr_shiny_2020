@@ -8,53 +8,54 @@ library("shiny")
 library("shinycssloaders") # Para agregar waiters.
 library("shinythemes")     # Para cambiarle el tema de colores.
 library("tidyr")           # Para pivotear la tabla.
-
+library("emo")
 # Cargo el dataset.
-emo_datos <- read_rds("Datos/emo_datos.rds")
+emo_datos <- read_rds("Datos/emo_datos.rds") %>% drop_na()
 
 ########## Interfaz de usuarie.
 
 ui <- navbarPage(                      # Vamos a tener un panel de tabs.
-    title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
-    theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
-    tabPanel(                          # Un tab para analisis por emoji.
-      "Por emoji",                     # Titulo del tab.
-      selectInput(                     # Input de selector de opciones.
-        "selector_emoji",              # ID del selector de emojis.
-        label = "Emoji",               # Label del selector.
-        choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
-        plotOutput("por_emoji")        # Lugar donde ira el plot para mostrar el grafico por emoji.
-      )
+  title = "Emoji Data Explorer",     # Titulo de la tabla de tabs.
+  theme = shinytheme("cerulean"),    # Le ponemos un lindo tema de colores!
+  tabPanel(                          # Un tab para analisis por emoji.
+    "Por emoji",                     # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_emoji",              # ID del selector de emojis.
+      label = "Emoji",               # Label del selector.
+      choices = unique(unlist(emo_datos[, -1])), # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
     ),
-    tabPanel(                          # Un tab para analisis por paises.
-      "Por pais",                      # Titulo del tab.
-      selectInput(                     # Input de selector de opciones.
-        "selector_pais",               # ID del selector de paises.
-        label = "Paises",              # Label del selector.
-        choices = unique(unlist(emo_datos$pais)), # Opciones posibles para seleccionar.
-        multiple = TRUE                # Permite seleccionar mas de uno.
-      ),
-      withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
-        plotOutput("por_pais"),        # Lugar donde ira el plot para mostrar el grafico por paises.
-        type = 8,                      # Otro tipo de spinner.
-        color = "#562457",             # Color del spinner.
-        size = 2                       # Tamanio del spinner
-      )
+    withSpinner(                     # Le agrego un waiter hasta que se cargue el plot.
+      plotOutput("por_emoji")        # Lugar donde ira el plot para mostrar el grafico por emoji.
     )
+  ),
+  tabPanel(                          # Un tab para analisis por paises.
+    "Por pais",                      # Titulo del tab.
+    selectInput(                     # Input de selector de opciones.
+      "selector_pais",               # ID del selector de paises.
+      label = "Paises",              # Label del selector.
+      choices = unique(unlist(emo_datos$pais)), # Opciones posibles para seleccionar.
+      multiple = TRUE                # Permite seleccionar mas de uno.
+    ),
+    plotOutput("por_pais"),        # Lugar donde ira el plot para mostrar el grafico por paises.
+  )
 )
+
 
 ########## Codigo de servidor.
 
-# Funcion para generar el plot.
+# Funcion para generar el plot con imagenes.
 # `data_conteos` debe ser un data.frame con columnas `x` y `n`.
+# `emoji_img_map` debe ser un data.frame con columnas `emoji` y `label`.
+emoji_img_map <- read_rds("Datos/emoji_img_map.rds")
 plot_barras <- function(data_conteos) {
+  library("ggtext")
   # Reordenamos de mayor a menor los datos del eje x.
-  ggplot(data_conteos, aes(x = fct_reorder(x, n, .desc = TRUE), y = n)) +
-    geom_col() +                       # Grafico de barras.
-    labs(x = NULL)                     # Borramos el label del eje x.
+  merge(data_conteos, emoji_img_map, by.x = "x", by.y = "emoji") %>%
+    ggplot(aes(x = fct_reorder(label, n, .desc = TRUE), y = n)) +
+    geom_col() +                              # Grafico de barras.
+    theme(axis.text.x = element_markdown()) + # Para poner la imagen del emoji en vez del emoji.
+    labs(x = NULL)                            # Borramos el label del eje x.
 }
 
 server <- function(input, output, session) {
@@ -78,7 +79,7 @@ server <- function(input, output, session) {
   output$por_pais <- renderPlot({
     # Uso la funcion `req` para que este codigo se ejecute solo si el `input` utilizado tiene algun
     # valor.
-    seleccion_pais <- req(input$selector_pais) # Obtengo el valor actual del selector.
+    seleccion_pais <- input$selector_pais # Obtengo el valor actual del selector.
     filter(emo_datos, pais %in% seleccion_pais) %>%
       select(-pais) %>% # Seleccionamos todo menos la columna de pais (vamos a ver solo los emoji).
       pivot_longer(cols = starts_with("top_")) %>% # No tenemos en cuenta el orden de eleccion.
@@ -91,3 +92,5 @@ server <- function(input, output, session) {
 ########## Ejecutamos la app!
 
 shinyApp(ui, server)
+
+
